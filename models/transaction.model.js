@@ -28,22 +28,7 @@ const Transaction= sequelize.define("transaction",{
                 type:Sequelize.ENUM("paid","transmitted","payable","cancelled"),
                 allowNull:false
             },
-            pays_origine:{
-                    type:Sequelize.STRING,
-                    allowNull:false,
-                    references:{
-                        model: Pays,
-                        key:'nom'
-                    }
-            },
-            pays_destination:{
-                type:Sequelize.STRING,
-                    allowNull:false,
-                    references:{
-                        model: Pays,
-                        key:'nom'
-                    }
-            }
+           
 })
 return Transaction
 }

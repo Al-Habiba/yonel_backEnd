@@ -12,4 +12,5 @@ module.exports=(sequelize,Sequelize)=>{
         phone:{type:Sequelize.STRING,allowNull:false},
         email:{type:Sequelize.STRING,allowNull:false}
     })
-}
+    return Sous_agence;
+    }

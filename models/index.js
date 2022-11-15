@@ -44,7 +44,7 @@ db.ville.belongsTo(db.pays);
 
 //relation entre pays et devise
 db.devise.hasMany(db.pays);
-db.pays.belongsTo(devise);
+db.pays.belongsTo(db.devise);
 
 //relation entre paiement et transaction
 db.transaction.hasOne(db.paiement);
@@ -61,5 +61,7 @@ db.user.belongsTo(db.sous_agence);
 //relation entre user et transaction
 db.user.hasMany(db.transaction);
 db.transaction.belongsTo(db.user);
+
+//création index pays origine et pays destination
 
 module.exports=db;

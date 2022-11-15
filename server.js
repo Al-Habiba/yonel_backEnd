@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 
 var db=require("./models/index");
-db.sequelize.sync(/*{force: true}*/)
+db.sequelize.sync({force: true})
 .then(()=>{console.log("Base de données bien synchronisée")})
 .catch((err=>{console.log("Echec lors de la synchronisation :"+err.message)}))
 app.listen(PORT, () => {

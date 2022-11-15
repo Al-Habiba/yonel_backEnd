@@ -4,4 +4,5 @@ module.exports=(sequelize,Sequelize)=>{
         password:{type:Sequelize.STRING,allowNull:false},
         key:{type:Sequelize.STRING,allowNull:false}
     })
+    return User;
 }
