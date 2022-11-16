@@ -7,7 +7,8 @@ module.exports=(sequelize,Sequelize)=>{
         },
         nom:{
             type:Sequelize.STRING,
-            allowNull:false
+            allowNull:false,
+            unique: true
         },
         symbole:{
             type:Sequelize.STRING

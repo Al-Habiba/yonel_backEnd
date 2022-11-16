@@ -29,19 +29,35 @@ const Transaction= sequelize.define("transaction",{
                 allowNull:false
             },
             pays_origine:{
-                    type:Sequelize.INTEGER,
+                    type:Sequelize.STRING,
                     allowNull:false,
                     references:{
                         model: 'pays',
-                        field:'codeiso2'
+                        key:'nom'
                     }
             },
             pays_destination:{
-                type:Sequelize.INTEGER,
+                type:Sequelize.STRING,
                     allowNull:false,
                     references:{
                         model: 'pays',
-                        key:'codeiso2'
+                        key:'nom'
+                    }
+            },
+            devise_destination:{
+                type:Sequelize.STRING,
+                    allowNull:false,
+                    references:{
+                        model: 'devises',
+                        key:'nom'
+                    }
+            },
+            devise_origine:{
+                type:Sequelize.STRING,
+                    allowNull:false,
+                    references:{
+                        model: 'devises',
+                        key:'nom'
                     }
             },
             

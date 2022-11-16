@@ -5,7 +5,7 @@ module.exports=(sequelize,Sequelize)=>{
             primaryKey:true,
             allowNull:false
         },
-        nom:{type:Sequelize.STRING,allowNull:false}
+        nom:{type:Sequelize.STRING,allowNull:false,unique:true}
     })
     return Pays
 }
