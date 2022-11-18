@@ -43,7 +43,9 @@ db.pays.hasMany(db.ville);
 db.ville.belongsTo(db.pays);
 
 //relation entre pays et devise
-db.devise.hasMany(db.pays);
+db.devise.hasMany(db.pays,{
+    as :'pays',
+     foreignKey:'codeiso3'});
 db.pays.belongsTo(db.devise);
 
 //relation entre paiement et transaction
@@ -51,8 +53,8 @@ db.transaction.hasOne(db.paiement);
 db.paiement.belongsTo(db.transaction);
 
 //relation entre transaction et devise 
-db.devise.hasMany(db.transaction);
-db.transaction.belongsTo(db.devise);
+//db.devise.hasMany(db.transaction);
+//db.transaction.belongsTo(db.devise);
 
 //relation entre user et sous agence
 db.sous_agence.hasMany(db.user);
