@@ -20,7 +20,7 @@ module.exports = {
        // process.env.TOKEN_KEY,
         'secret',
         {
-          expiresIn: "2h",
+          expiresIn: "7 years",
         }
       );
       const sousAgenceCode= req.body.SousAgenceCodeSousAgence;
@@ -57,15 +57,15 @@ module.exports = {
           //process.env.TOKEN_KEY,
           'secret',
           {
-            expiresIn: "2h",
+            expiresIn: "7 years",
           }
         );
           // save user token
-      User.token = token;
+      user.token = token;
        // user
        res.status(200).json(user); 
     }
-    res.status(400).send("Invalid Credentials");
+    else res.status(400).send("Invalid Credentials");
     }  
        catch (error) {
         console.log(error)

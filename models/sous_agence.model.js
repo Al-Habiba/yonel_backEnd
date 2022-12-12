@@ -1,7 +1,7 @@
 module.exports=(sequelize,Sequelize)=>{
     const Sous_agence=sequelize.define("sous_agence",{
         code_sous_agence:{
-            type:Sequelize.INTEGER,
+            type:Sequelize.STRING,
             primaryKey:true,
             allowNull:false
         },

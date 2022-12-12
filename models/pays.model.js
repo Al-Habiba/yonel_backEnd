@@ -1,7 +1,7 @@
 module.exports=(sequelize,Sequelize)=>{
     const Pays=sequelize.define("pays",{
         codeiso2:{
-            type:Sequelize.INTEGER,
+            type:Sequelize.STRING,
             primaryKey:true,
             allowNull:false
         },

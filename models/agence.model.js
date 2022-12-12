@@ -1,7 +1,7 @@
 module.exports=(sequelize,Sequelize)=>{
     const Agence=sequelize.define("agence",{
         code:{
-            type:Sequelize.INTEGER,
+            type:Sequelize.STRING,
             primaryKey:true,
             allowNull:false
         },

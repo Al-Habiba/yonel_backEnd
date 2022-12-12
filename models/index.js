@@ -2,6 +2,7 @@ const dbConfig=require("../config/db.conf");
 
 const Sequelize= require("sequelize");
 
+
 const sequelize= new Sequelize (dbConfig.DB, dbConfig.USER,dbConfig.PASSWORD,{
     host:dbConfig.HOST,
     dialect:dbConfig.dialect,
@@ -30,26 +31,24 @@ db.pays=require("./pays.model")(sequelize, Sequelize);
 db.sous_agence=require("./sous_agence.model")(sequelize, Sequelize);
 db.ville=require("./ville.model")(sequelize, Sequelize);
 db.user=require("./user.model")(sequelize, Sequelize);
-
+db.client=require("./client.model")(sequelize, Sequelize);
 
 //les relations entre les tables 
 
 //relation entre agence et sous agence
-db.agence.hasMany(db.sous_agence);
+db.agence.hasMany(db.sous_agence,{onDelete:'cascade',onUpdate:'cascade'});
 db.sous_agence.belongsTo(db.agence);
 
 //relation entre pays et ville
-db.pays.hasMany(db.ville);
+db.pays.hasMany(db.ville,{onDelete:'cascade',onUpdate:'cascade'});
 db.ville.belongsTo(db.pays);
 
 //relation entre pays et devise
-db.devise.hasMany(db.pays,{
-    as :'pays',
-     foreignKey:'codeiso3'});
+db.devise.hasMany(db.pays,{onDelete:'cascade',onUpdate:'cascade'});
 db.pays.belongsTo(db.devise);
 
 //relation entre paiement et transaction
-db.transaction.hasOne(db.paiement);
+db.transaction.hasOne(db.paiement,{onDelete:'cascade',onUpdate:'cascade'});
 db.paiement.belongsTo(db.transaction);
 
 //relation entre transaction et devise 
@@ -57,13 +56,14 @@ db.paiement.belongsTo(db.transaction);
 //db.transaction.belongsTo(db.devise);
 
 //relation entre user et sous agence
-db.sous_agence.hasMany(db.user);
+db.sous_agence.hasMany(db.user,{onDelete:'cascade',onUpdate:'cascade'});
 db.user.belongsTo(db.sous_agence);
 
 //relation entre user et transaction
-db.user.hasMany(db.transaction);
+db.user.hasMany(db.transaction,{onDelete:'cascade',onUpdate:'cascade'});
 db.transaction.belongsTo(db.user);
 
-//création index pays origine et pays destination
-
+//création index emetteur et recepteur pour la table transaction
+db.transaction.belongsTo(db.client,{as:'emetteur',foreignKey:'emetteurId'});
+db.transaction.belongsTo(db.client,{as:'recepteur',foreignKey:'recepteurId'});
 module.exports=db;

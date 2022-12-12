@@ -1,0 +1,31 @@
+module.exports=(sequelize,Sequelize)=>{
+    const Client =sequelize.define("client",{
+        nom:{
+            type:Sequelize.STRING,
+            allowNull:false
+        },
+        prenom:{
+            type:Sequelize.STRING,
+            allowNull:false
+        },
+        phone:{
+            type:Sequelize.STRING,
+            primaryKey:true,
+            allowNull:false
+        },
+        email:{
+            type:Sequelize.STRING,
+            allowNull:false,
+            unique:true,
+        },
+        birthdate:{
+            type:Sequelize.DATE,
+            allowNull:false
+        },
+        lieu_naissance:{
+            type:Sequelize.STRING,
+            allowNull:false
+        },
+    })
+    return Client
+}
